@@ -493,14 +493,14 @@
 	rx_delay = <0x27>;
 
 	phy-handle = <&rgmii_phy1>;
-	status = "okay";
+	status = "disabled";
 };
 
 &mdio1 {
 	rgmii_phy1: phy@0 {
 		compatible = "ethernet-phy-ieee802.3-c22";
 		reg = <0x0>;
-		status = "okay";
+		status = "disabled";
 	};
 };
 
