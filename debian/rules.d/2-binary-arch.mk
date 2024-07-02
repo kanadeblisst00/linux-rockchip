@@ -27,7 +27,7 @@ $(stampdir)/stamp-prepare-tree-%: debian/scripts/fix-filenames
 	[ "$(do_full_source)" != 'true' ] && true || \
 		rsync -a --exclude debian --exclude debian.master --exclude $(DEBIAN) * $(builddir)/build-$*
 	if [ -e $(commonconfdir)/config.common.ubuntu ]; then \
-		cat $(commonconfdir)/config.common.ubuntu $(archconfdir)/config.common.$(arch) $(archconfdir)/config.flavour.$(target_flavour) > $(builddir)/build-$*/.config; \
+		cat $(commonconfdir)/config.common.ubuntu $(archconfdir)/config.common.$(arch) $(archconfdir)/config.flavour.$(target_flavour) $(archconfdir)/config.ebpf > $(builddir)/build-$*/.config; \
 	else \
 		python3 debian/scripts/misc/annotations --export --arch $(arch) --flavour $(target_flavour) | sed -e 's/.*CONFIG_VERSION_SIGNATURE.*/CONFIG_VERSION_SIGNATURE="Ubuntu $(release)-$(revision)-$* $(raw_kernelversion)"/' > $(builddir)/build-$*/.config; \
 	fi
